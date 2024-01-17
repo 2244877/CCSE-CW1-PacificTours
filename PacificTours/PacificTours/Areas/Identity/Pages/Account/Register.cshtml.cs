@@ -106,6 +106,8 @@ namespace PacificTours.Areas.Identity.Pages.Account
             [Required]
             public string PhoneNumber { get; set; }
             [Required]
+            public string PassportNumber { get; set; }
+            [Required]
             public string Address { get; set; }
         }
 
