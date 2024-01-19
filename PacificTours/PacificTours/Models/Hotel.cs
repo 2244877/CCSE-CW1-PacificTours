@@ -10,5 +10,5 @@ namespace PacificTours.Models
         public string SingleRoomPrice { get; set; }
         public string DoubleRoomPrice { get; set; }
         public string FamilyRoomPrice { get; set; }
-        }
+    }
 }
