@@ -1,0 +1,40 @@
+﻿@page
+@model HotelBookingModel
+@{
+}
+
+<br />
+<h2>List of Bookings</h2>
+<a class="btn btn-primary btn-sm" href="/HotelBooking/NewBooking">New Booking</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Hotel</th>
+            <th>Room</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Created At</th>
+            <th>hotelandroom</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.listHotelBooking)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.hotel</td>
+                <td>@item.room</td>
+                <td>@item.checkindate</td>
+                <td>@item.checkoutdate</td>
+                <td>@item.created_at</td>
+                <td>@item.hotelandroom</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/HotelBooking/Edit?id=@item.id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/HotelBooking/Delete?id=@item.id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

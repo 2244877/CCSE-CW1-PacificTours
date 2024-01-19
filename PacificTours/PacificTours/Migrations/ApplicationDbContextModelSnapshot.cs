@@ -51,19 +51,19 @@ namespace PacificTours.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "53d55a8f-689d-43e7-a3c7-4abf5d61422a",
+                            Id = "959e93d0-a8bb-47c7-9c20-cd5e89ee801e",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "76c6ab37-8fdf-4122-aec3-9972d4c02006",
+                            Id = "a7531330-bc8c-4c4b-b6f9-e8a93c06d729",
                             Name = "client",
                             NormalizedName = "client"
                         },
                         new
                         {
-                            Id = "214b98e2-138a-4ee0-b5db-950c3cc1c984",
+                            Id = "7b95cc09-a74c-482e-9069-31d1056e189f",
                             Name = "seller",
                             NormalizedName = "seller"
                         });
@@ -122,10 +122,12 @@ namespace PacificTours.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -162,10 +164,12 @@ namespace PacificTours.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -253,6 +257,28 @@ namespace PacificTours.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("PacificTours.Models.Hotel", b =>
+                {
+                    b.Property<string>("HotelName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("DoubleRoomPrice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FamilyRoomPrice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SingleRoomPrice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("HotelName");
+
+                    b.ToTable("hotels");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -11,8 +11,10 @@ namespace PacificTours.Services
         {
 
         }
+        public DbSet<Hotel> hotels { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
             base.OnModelCreating(builder);
 
             var admin = new IdentityRole("admin");

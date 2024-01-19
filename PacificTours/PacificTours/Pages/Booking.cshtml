@@ -6,3 +6,19 @@
 <div class="text-center">
     <h1 class="display-4">Bookings Page</h1>
 </div>
+<<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>SingleRoomPrice</th>
+        </tr>
+        <tr>
+            @foreach (var item in Model.HotelList)
+            {
+                <td>@item.HotelName</td>
+                <td>@item.SingleRoomPrice</td>
+            }
+        </tr>
+
+    </table>
+</div>
