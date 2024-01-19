@@ -12,7 +12,7 @@ using PacificTours.Services;
 namespace PacificTours.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240119175048_FirstMigration")]
+    [Migration("20240119203034_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -54,19 +54,19 @@ namespace PacificTours.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "959e93d0-a8bb-47c7-9c20-cd5e89ee801e",
+                            Id = "73ed75e2-1a6c-4987-a0f9-c456cf327955",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "a7531330-bc8c-4c4b-b6f9-e8a93c06d729",
+                            Id = "4a5e24c9-67ad-48b5-b8fb-b3d6d126db5f",
                             Name = "client",
                             NormalizedName = "client"
                         },
                         new
                         {
-                            Id = "7b95cc09-a74c-482e-9069-31d1056e189f",
+                            Id = "7f3f2812-9c76-4a0d-abab-996918a6de70",
                             Name = "seller",
                             NormalizedName = "seller"
                         });
@@ -264,8 +264,11 @@ namespace PacificTours.Migrations
 
             modelBuilder.Entity("PacificTours.Models.Hotel", b =>
                 {
-                    b.Property<string>("HotelName")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Hotel_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Hotel_Id"));
 
                     b.Property<string>("DoubleRoomPrice")
                         .IsRequired()
@@ -275,13 +278,35 @@ namespace PacificTours.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("HotelName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SingleRoomPrice")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("HotelName");
+                    b.HasKey("Hotel_Id");
 
                     b.ToTable("hotels");
+
+                    b.HasData(
+                        new
+                        {
+                            Hotel_Id = 1,
+                            DoubleRoomPrice = "300",
+                            FamilyRoomPrice = "100",
+                            HotelName = "Hilton",
+                            SingleRoomPrice = "120"
+                        },
+                        new
+                        {
+                            Hotel_Id = 2,
+                            DoubleRoomPrice = "300",
+                            FamilyRoomPrice = "100",
+                            HotelName = "Mariot",
+                            SingleRoomPrice = "120"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

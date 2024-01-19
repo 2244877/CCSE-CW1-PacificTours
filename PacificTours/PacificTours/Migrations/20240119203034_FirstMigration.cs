@@ -60,14 +60,16 @@ namespace PacificTours.Migrations
                 name: "hotels",
                 columns: table => new
                 {
-                    HotelName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Hotel_Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HotelName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SingleRoomPrice = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DoubleRoomPrice = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FamilyRoomPrice = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_hotels", x => x.HotelName);
+                    table.PrimaryKey("PK_hotels", x => x.Hotel_Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -181,9 +183,18 @@ namespace PacificTours.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "7b95cc09-a74c-482e-9069-31d1056e189f", null, "seller", "seller" },
-                    { "959e93d0-a8bb-47c7-9c20-cd5e89ee801e", null, "admin", "admin" },
-                    { "a7531330-bc8c-4c4b-b6f9-e8a93c06d729", null, "client", "client" }
+                    { "4a5e24c9-67ad-48b5-b8fb-b3d6d126db5f", null, "client", "client" },
+                    { "73ed75e2-1a6c-4987-a0f9-c456cf327955", null, "admin", "admin" },
+                    { "7f3f2812-9c76-4a0d-abab-996918a6de70", null, "seller", "seller" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "hotels",
+                columns: new[] { "Hotel_Id", "DoubleRoomPrice", "FamilyRoomPrice", "HotelName", "SingleRoomPrice" },
+                values: new object[,]
+                {
+                    { 1, "300", "100", "Hilton", "120" },
+                    { 2, "300", "100", "Mariot", "120" }
                 });
 
             migrationBuilder.CreateIndex(
