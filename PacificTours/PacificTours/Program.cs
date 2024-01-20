@@ -2,6 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using PacificTours.Services;
 using Microsoft.AspNetCore.Identity;
 using PacificTours.Models;
+using PacificTours.Repository;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,3 +39,13 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+// Add dependency injection
+builder.Services.AddScoped<IHotelBookingRepository, HotelBookingRepository>();
+builder.Services.AddDbContext<HotelBookingContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), sqlServerOptionsAction: sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure();
+    });
+});

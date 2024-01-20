@@ -5,13 +5,14 @@ using PacificTours.Models;
 
 namespace PacificTours.Services
 {
-    public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options) // Constructor for class
         {
 
         }
         public DbSet<Hotel> hotels { get; set; }
+        public DbSet<HotelBooking> hotelbookings { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
@@ -42,7 +43,7 @@ namespace PacificTours.Services
             {
                 builder.Entity<Hotel>().HasData(hotel);
             }
-            
+
         }
     }
 }

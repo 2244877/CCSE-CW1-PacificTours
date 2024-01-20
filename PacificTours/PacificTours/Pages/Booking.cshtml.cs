@@ -19,7 +19,7 @@ namespace PacificTours.Pages
         public async Task OnGet()
         {
             HotelList = await _context.hotels
-                .ToListAsync();
+                .ToListAsync(); 
         }
     }
 }
