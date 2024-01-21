@@ -33,17 +33,20 @@ namespace PacificTours.Controllers
         {
             return Ok(_hotelBookingRepository.GetHotelBookingById(id));
         }
-        // Post: api/HotelBooking
+        // Post: api/HotelBooking/
         [HttpPost]
         public void Post([FromBody] HotelBooking value)
         {
-            _hotelBookingRepository.InsertHotelBooking(value);
+            if (ModelState.IsValid)
+            {
+                _hotelBookingRepository.InsertHotelBooking(value);
+            }
         }
         // Delete: api/HotelBooking
         [HttpDelete("{id}")] 
-        public void Delete(int Booking_Id)
+        public void Delete(int id)
         {
-            _hotelBookingRepository.DeleteHotelBooking(Booking_Id);
+            _hotelBookingRepository.DeleteHotelBooking(id);
         }
     }
 }
