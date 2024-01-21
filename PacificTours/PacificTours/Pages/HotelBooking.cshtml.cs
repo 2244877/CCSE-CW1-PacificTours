@@ -44,7 +44,7 @@ namespace PacificTours.Pages
         {
             if (ModelState.IsValid)
             {
-                var hotelbooking = new HotelBooking()
+                var hotelbooking = new HotelBooking
                 {
                     Hotel = Input.Hotel,
                     Room = Input.Room,
