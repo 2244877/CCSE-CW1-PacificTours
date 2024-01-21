@@ -18,16 +18,9 @@ namespace PacificTours.Pages
         {
             _context = context;
         }
-        public IList<HotelBooking> HotelBookingList { get; set; }
-        public async void OnGet()
-        {
-            HotelBookingList = await _context.hotelbookings
-                .ToListAsync();
-        }
 
         [BindProperty]
         public InputModel Input { get; set; }
-
         public class InputModel
         {
             [Required]
@@ -39,5 +32,30 @@ namespace PacificTours.Pages
             [Required]
             public DateTime CheckOutDate { get; set; }
         }
+
+        public IList<HotelBooking> HotelBookingList { get; set; }
+        public async void OnGet()
+        {
+            HotelBookingList = await _context.hotelbookings
+                .ToListAsync();
+        }
+
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        {
+            if (ModelState.IsValid)
+            {
+                var hotelbooking = new HotelBooking()
+                {
+                    Hotel = Input.Hotel,
+                    Room = Input.Room,
+                    CheckInDate = Input.CheckInDate,
+                    CheckOutDate = Input.CheckOutDate,
+                };
+                _context.Add(hotelbooking);
+                _context.SaveChanges();
+
+            }
+            return Page();
+        }        
     }
 }
