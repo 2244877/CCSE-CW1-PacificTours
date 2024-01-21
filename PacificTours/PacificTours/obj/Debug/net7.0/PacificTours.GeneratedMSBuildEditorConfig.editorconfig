@@ -92,8 +92,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/leost/GitHub/CCSE-CW1-PacificTours/PacificTours/PacificTours/Pages/TourBooking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVG91ckJvb2tpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/leost/GitHub/CCSE-CW1-PacificTours/PacificTours/PacificTours/Pages/User.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/leost/GitHub/CCSE-CW1-PacificTours/PacificTours/PacificTours/Pages/UserBookings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlckJvb2tpbmdzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/leost/GitHub/CCSE-CW1-PacificTours/PacificTours/PacificTours/Pages/_ViewImports.cshtml]

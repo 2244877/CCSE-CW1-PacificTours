@@ -12,7 +12,7 @@ using PacificTours.Services;
 namespace PacificTours.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240119203034_FirstMigration")]
+    [Migration("20240121172047_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -54,19 +54,19 @@ namespace PacificTours.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "73ed75e2-1a6c-4987-a0f9-c456cf327955",
+                            Id = "8e0613f0-18c5-4f64-bdf9-1c48f1237815",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "4a5e24c9-67ad-48b5-b8fb-b3d6d126db5f",
+                            Id = "585781af-52c6-4689-a762-f9e50f271411",
                             Name = "client",
                             NormalizedName = "client"
                         },
                         new
                         {
-                            Id = "7f3f2812-9c76-4a0d-abab-996918a6de70",
+                            Id = "1bc1829f-2a72-4342-9874-21fefa251d97",
                             Name = "seller",
                             NormalizedName = "seller"
                         });
@@ -294,18 +294,118 @@ namespace PacificTours.Migrations
                         new
                         {
                             Hotel_Id = 1,
-                            DoubleRoomPrice = "300",
-                            FamilyRoomPrice = "100",
-                            HotelName = "Hilton",
-                            SingleRoomPrice = "120"
+                            DoubleRoomPrice = "775",
+                            FamilyRoomPrice = "950",
+                            HotelName = "Hilton London Hotel",
+                            SingleRoomPrice = "375"
                         },
                         new
                         {
                             Hotel_Id = 2,
-                            DoubleRoomPrice = "300",
-                            FamilyRoomPrice = "100",
-                            HotelName = "Mariot",
-                            SingleRoomPrice = "120"
+                            DoubleRoomPrice = "500",
+                            FamilyRoomPrice = "900",
+                            HotelName = "London Marriott Hotel",
+                            SingleRoomPrice = "300"
+                        },
+                        new
+                        {
+                            Hotel_Id = 3,
+                            DoubleRoomPrice = "120",
+                            FamilyRoomPrice = "150",
+                            HotelName = "Travelodge Brighton Seafront",
+                            SingleRoomPrice = "80"
+                        },
+                        new
+                        {
+                            Hotel_Id = 4,
+                            DoubleRoomPrice = "400",
+                            FamilyRoomPrice = "520",
+                            HotelName = "Kings Hotel Brighton",
+                            SingleRoomPrice = "180"
+                        },
+                        new
+                        {
+                            Hotel_Id = 5,
+                            DoubleRoomPrice = "400",
+                            FamilyRoomPrice = "520",
+                            HotelName = "Leonardo Hotel Brighton",
+                            SingleRoomPrice = "180"
+                        },
+                        new
+                        {
+                            Hotel_Id = 6,
+                            DoubleRoomPrice = "100",
+                            FamilyRoomPrice = "155",
+                            HotelName = "Nevis Bank Inn, Fort William",
+                            SingleRoomPrice = "90"
+                        });
+                });
+
+            modelBuilder.Entity("PacificTours.Models.HotelBooking", b =>
+                {
+                    b.Property<int>("Booking_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Booking_Id"));
+
+                    b.Property<DateTime>("CheckInDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CheckOutDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Hotel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Room")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Booking_Id");
+
+                    b.ToTable("hotelbookings");
+                });
+
+            modelBuilder.Entity("PacificTours.Models.Tour", b =>
+                {
+                    b.Property<int>("Tour_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Tour_Id"));
+
+                    b.Property<string>("TourName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TourPrice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Tour_Id");
+
+                    b.ToTable("tours");
+
+                    b.HasData(
+                        new
+                        {
+                            Tour_Id = 1,
+                            TourName = "Real Britain",
+                            TourPrice = "1200"
+                        },
+                        new
+                        {
+                            Tour_Id = 2,
+                            TourName = "Britain and Ireland Explorer",
+                            TourPrice = "2000"
+                        },
+                        new
+                        {
+                            Tour_Id = 3,
+                            TourName = "Best of Britain ",
+                            TourPrice = "2900"
                         });
                 });
 

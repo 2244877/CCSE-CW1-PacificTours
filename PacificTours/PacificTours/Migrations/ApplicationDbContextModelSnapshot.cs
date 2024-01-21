@@ -51,19 +51,19 @@ namespace PacificTours.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2dcf5eee-ae54-4361-b12e-bb5f92e2f42d",
+                            Id = "8e0613f0-18c5-4f64-bdf9-1c48f1237815",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "1dd86b1f-75ee-4d5b-b6f7-f03d107612fa",
+                            Id = "585781af-52c6-4689-a762-f9e50f271411",
                             Name = "client",
                             NormalizedName = "client"
                         },
                         new
                         {
-                            Id = "134a2acf-206f-409d-b431-2b9f6343d93b",
+                            Id = "1bc1829f-2a72-4342-9874-21fefa251d97",
                             Name = "seller",
                             NormalizedName = "seller"
                         });
@@ -363,6 +363,47 @@ namespace PacificTours.Migrations
                     b.HasKey("Booking_Id");
 
                     b.ToTable("hotelbookings");
+                });
+
+            modelBuilder.Entity("PacificTours.Models.Tour", b =>
+                {
+                    b.Property<int>("Tour_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Tour_Id"));
+
+                    b.Property<string>("TourName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TourPrice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Tour_Id");
+
+                    b.ToTable("tours");
+
+                    b.HasData(
+                        new
+                        {
+                            Tour_Id = 1,
+                            TourName = "Real Britain",
+                            TourPrice = "1200"
+                        },
+                        new
+                        {
+                            Tour_Id = 2,
+                            TourName = "Britain and Ireland Explorer",
+                            TourPrice = "2000"
+                        },
+                        new
+                        {
+                            Tour_Id = 3,
+                            TourName = "Best of Britain ",
+                            TourPrice = "2900"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

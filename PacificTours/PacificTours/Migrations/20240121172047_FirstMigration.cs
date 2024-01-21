@@ -57,6 +57,22 @@ namespace PacificTours.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "hotelbookings",
+                columns: table => new
+                {
+                    Booking_Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Hotel = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Room = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CheckInDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CheckOutDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_hotelbookings", x => x.Booking_Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "hotels",
                 columns: table => new
                 {
@@ -70,6 +86,20 @@ namespace PacificTours.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_hotels", x => x.Hotel_Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tours",
+                columns: table => new
+                {
+                    Tour_Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TourName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TourPrice = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tours", x => x.Tour_Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -183,9 +213,9 @@ namespace PacificTours.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "4a5e24c9-67ad-48b5-b8fb-b3d6d126db5f", null, "client", "client" },
-                    { "73ed75e2-1a6c-4987-a0f9-c456cf327955", null, "admin", "admin" },
-                    { "7f3f2812-9c76-4a0d-abab-996918a6de70", null, "seller", "seller" }
+                    { "1bc1829f-2a72-4342-9874-21fefa251d97", null, "seller", "seller" },
+                    { "585781af-52c6-4689-a762-f9e50f271411", null, "client", "client" },
+                    { "8e0613f0-18c5-4f64-bdf9-1c48f1237815", null, "admin", "admin" }
                 });
 
             migrationBuilder.InsertData(
@@ -193,8 +223,22 @@ namespace PacificTours.Migrations
                 columns: new[] { "Hotel_Id", "DoubleRoomPrice", "FamilyRoomPrice", "HotelName", "SingleRoomPrice" },
                 values: new object[,]
                 {
-                    { 1, "300", "100", "Hilton", "120" },
-                    { 2, "300", "100", "Mariot", "120" }
+                    { 1, "775", "950", "Hilton London Hotel", "375" },
+                    { 2, "500", "900", "London Marriott Hotel", "300" },
+                    { 3, "120", "150", "Travelodge Brighton Seafront", "80" },
+                    { 4, "400", "520", "Kings Hotel Brighton", "180" },
+                    { 5, "400", "520", "Leonardo Hotel Brighton", "180" },
+                    { 6, "100", "155", "Nevis Bank Inn, Fort William", "90" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "tours",
+                columns: new[] { "Tour_Id", "TourName", "TourPrice" },
+                values: new object[,]
+                {
+                    { 1, "Real Britain", "1200" },
+                    { 2, "Britain and Ireland Explorer", "2000" },
+                    { 3, "Best of Britain ", "2900" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -256,7 +300,13 @@ namespace PacificTours.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "hotelbookings");
+
+            migrationBuilder.DropTable(
                 name: "hotels");
+
+            migrationBuilder.DropTable(
+                name: "tours");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

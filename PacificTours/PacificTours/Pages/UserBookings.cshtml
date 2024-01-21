@@ -1,0 +1,31 @@
+﻿@page
+@model PacificTours.Pages.HotelBookingsModel
+@{
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bookings Page</h1>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>Hotel Booking Id</th>
+            <th>Hotel</th>
+            <th>Room</th>
+            <th>Check In Date</th>
+            <th>Check Out Date</th>
+        </tr>
+        <br />
+        @foreach (var item in Model.HotelBookingList)
+        {
+            <tr>
+                <td>@item.Booking_Id</td>
+                <td>@item.Hotel</td>
+                <td>@item.Room</td>
+                <td>@item.CheckInDate</td>
+                <td>@item.CheckOutDate</td>
+            </tr>
+        }
+    </table>
+</div>

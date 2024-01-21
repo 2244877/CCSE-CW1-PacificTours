@@ -7,9 +7,9 @@ namespace PacificTours.Models
         [Key]
         public int Booking_Id { get; set; }
         [Required]
-        public string Hotel { get; set; }
+        public string Hotel { get; set; } = "";
         [Required]
-        public string Room { get; set; }
+        public string Room { get; set; } = "";
         [Required]
         public DateTime CheckInDate { get; set; }
         [Required]

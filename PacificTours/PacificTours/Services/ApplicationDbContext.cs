@@ -13,6 +13,7 @@ namespace PacificTours.Services
         }
         public DbSet<Hotel> hotels { get; set; }
         public DbSet<HotelBooking> hotelbookings { get; set; }
+        public DbSet<Tour> tours { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
@@ -44,6 +45,17 @@ namespace PacificTours.Services
                 builder.Entity<Hotel>().HasData(hotel);
             }
 
+            var tourList = new List<Tour>
+            {
+                new() { Tour_Id=1, TourName="Real Britain", TourPrice="1200"},
+                new() { Tour_Id=2, TourName="Britain and Ireland Explorer", TourPrice="2000"},
+                new() { Tour_Id=3, TourName="Best of Britain ", TourPrice="2900"},
+            };
+
+            foreach (var tour in tourList)
+            {
+                builder.Entity<Tour>().HasData(tour);
+            }
         }
     }
 }

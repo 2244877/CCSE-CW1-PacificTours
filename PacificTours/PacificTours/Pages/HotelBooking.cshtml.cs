@@ -34,7 +34,7 @@ namespace PacificTours.Pages
         }
 
         public IList<HotelBooking> HotelBookingList { get; set; }
-        public async void OnGet()
+        public async Task OnGet()
         {
             HotelBookingList = await _context.hotelbookings
                 .ToListAsync();
@@ -56,6 +56,6 @@ namespace PacificTours.Pages
 
             }
             return Page();
-        }        
+        }
     }
 }

@@ -16,10 +16,14 @@ namespace PacificTours.Pages
             _context = context;
         }
         public IList<Hotel> HotelList { get; set; }
+        public IList<Tour> TourList { get; set; }
         public async Task OnGet()
         {
             HotelList = await _context.hotels
-                .ToListAsync(); 
+                .ToListAsync();
+
+            TourList = await _context.tours
+                .ToListAsync();
         }
     }
 }
