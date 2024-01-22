@@ -32,6 +32,7 @@ namespace PacificTours.Services
 
             builder.Entity<HotelBooking>().HasOne(hotelbooking => hotelbooking.Hotel).WithMany(hotel => hotel.HotelBookings).HasForeignKey(h => h.Hotel_Id);
 
+
             var hotelList = new List<Hotel>
             {
                 new() { Hotel_Id=1, HotelName="Hilton London Hotel", SingleRoomPrice="375", DoubleRoomPrice="775", FamilyRoomPrice="950"},
