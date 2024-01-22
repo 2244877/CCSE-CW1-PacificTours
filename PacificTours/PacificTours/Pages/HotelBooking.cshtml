@@ -14,7 +14,7 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Hotel</label>
                 <div class="col-sm-10">
-                    <select class="form-control" asp-for="Input.Hotel">
+                    <select class="form-control" asp-for="Input.Hotel_Id">
                         @foreach (var hotel in Model.Hotels)
                         {
                             <option value="@hotel.Hotel_Id">@hotel.HotelName</option>

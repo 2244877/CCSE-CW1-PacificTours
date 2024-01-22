@@ -25,7 +25,7 @@ namespace PacificTours.Pages
         public class InputModel
         {
             [Required]
-            public string Hotel { get; set; }
+            public int Hotel_Id { get; set; }
             [Required]
             public string RoomType { get; set; }
             [Required]
@@ -50,7 +50,7 @@ namespace PacificTours.Pages
             {
                 var hotelbooking = new HotelBooking
                 {
-                    Hotel = Input.Hotel,
+                    Hotel_Id = Input.Hotel_Id,
                     RoomType = Input.RoomType,
                     CheckInDate = Input.CheckInDate,
                     CheckOutDate = Input.CheckOutDate,

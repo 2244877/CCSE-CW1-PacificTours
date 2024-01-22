@@ -294,3 +294,5 @@ C:\Users\leost\GitHub\CCSE-CW1-PacificTours\PacificTours\PacificTours\bin\Debug\
 C:\Users\leost\GitHub\CCSE-CW1-PacificTours\PacificTours\PacificTours\bin\Debug\net7.0\runtimes\win-x86\native\sni.dll
 C:\Users\leost\GitHub\CCSE-CW1-PacificTours\PacificTours\PacificTours\bin\Debug\net7.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\leost\GitHub\CCSE-CW1-PacificTours\PacificTours\PacificTours\bin\Debug\net7.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\leost\GitHub\CCSE-CW1-PacificTours\PacificTours\PacificTours\bin\Debug\net7.0\Castle.Core.dll
+C:\Users\leost\GitHub\CCSE-CW1-PacificTours\PacificTours\PacificTours\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Proxies.dll

@@ -18,6 +18,9 @@ namespace PacificTours.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.15")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -51,19 +54,19 @@ namespace PacificTours.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6018255d-c973-44df-aa77-9c23ac5bbadc",
+                            Id = "580804db-7de8-44d5-a64e-0c91af54a187",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "7e7b9fac-0387-4cc2-848b-43fdc96e7988",
+                            Id = "00093d2d-0dae-4cf0-8bf2-45518e0dc3ac",
                             Name = "client",
                             NormalizedName = "client"
                         },
                         new
                         {
-                            Id = "777bacb3-95d3-4f32-adfb-f74f894b30bc",
+                            Id = "b64d3b5f-adf4-4706-aaf3-9f6d0b1c7dc4",
                             Name = "seller",
                             NormalizedName = "seller"
                         });
@@ -352,15 +355,16 @@ namespace PacificTours.Migrations
                     b.Property<DateTime>("CheckOutDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Hotel")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Hotel_Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("RoomType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Booking_Id");
+
+                    b.HasIndex("Hotel_Id");
 
                     b.ToTable("hotelbookings");
                 });
@@ -455,6 +459,22 @@ namespace PacificTours.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("PacificTours.Models.HotelBooking", b =>
+                {
+                    b.HasOne("PacificTours.Models.Hotel", "Hotel")
+                        .WithMany("HotelBookings")
+                        .HasForeignKey("Hotel_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+                });
+
+            modelBuilder.Entity("PacificTours.Models.Hotel", b =>
+                {
+                    b.Navigation("HotelBookings");
                 });
 #pragma warning restore 612, 618
         }
