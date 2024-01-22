@@ -5,3 +5,17 @@
 
 <h1 class="display-4">Payments Page</h1>
 
+<p class="col-sm-10">Pay 20% Deposit: <button class="btn btn-primary" onclick="DepositPayment()">Pay 20% Now</button></p>
+<p class="col-sm-10">Pay For Booking In Full: <button class="btn btn-primary" onclick="FullPayment()">Pay Now </button></p>
+
+<h2 id="DepositPaymentConfirmed"></h2>
+<h2 id="FullPaymentConfirmed"></h2>
+
+<script>
+    function DepositPayment() {
+        document.getElementById("DepositPaymentConfirmed").innerHTML = "Deposit Paid";
+    }
+    function FullPayment() {
+        document.getElementById("FullPaymentConfirmed").innerHTML = "Full Payment Confirmed";
+    }
+</script>
