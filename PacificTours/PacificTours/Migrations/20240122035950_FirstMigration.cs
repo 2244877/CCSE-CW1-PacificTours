@@ -198,6 +198,7 @@ namespace PacificTours.Migrations
                 {
                     Booking_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    User_Id = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Hotel_Id = table.Column<int>(type: "int", nullable: false),
                     RoomType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CheckInDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -219,9 +220,9 @@ namespace PacificTours.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "00093d2d-0dae-4cf0-8bf2-45518e0dc3ac", null, "client", "client" },
-                    { "580804db-7de8-44d5-a64e-0c91af54a187", null, "admin", "admin" },
-                    { "b64d3b5f-adf4-4706-aaf3-9f6d0b1c7dc4", null, "seller", "seller" }
+                    { "16be22d7-85a0-4ad9-b836-e4462b6d91ed", null, "seller", "seller" },
+                    { "c3d62773-b104-476f-8e0c-3f226f7eed73", null, "client", "client" },
+                    { "f6373604-24c9-4cea-ac40-dacadc6803f4", null, "admin", "admin" }
                 });
 
             migrationBuilder.InsertData(

@@ -12,7 +12,7 @@ using PacificTours.Services;
 namespace PacificTours.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240122005433_FirstMigration")]
+    [Migration("20240122035950_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -57,19 +57,19 @@ namespace PacificTours.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "580804db-7de8-44d5-a64e-0c91af54a187",
+                            Id = "f6373604-24c9-4cea-ac40-dacadc6803f4",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "00093d2d-0dae-4cf0-8bf2-45518e0dc3ac",
+                            Id = "c3d62773-b104-476f-8e0c-3f226f7eed73",
                             Name = "client",
                             NormalizedName = "client"
                         },
                         new
                         {
-                            Id = "b64d3b5f-adf4-4706-aaf3-9f6d0b1c7dc4",
+                            Id = "16be22d7-85a0-4ad9-b836-e4462b6d91ed",
                             Name = "seller",
                             NormalizedName = "seller"
                         });
@@ -362,6 +362,10 @@ namespace PacificTours.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("RoomType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("User_Id")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

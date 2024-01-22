@@ -66,7 +66,6 @@ namespace PacificTours.Areas.Identity.Pages.Account.Manage
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
-
             Username = userName;
 
             Input = new InputModel
@@ -82,10 +81,10 @@ namespace PacificTours.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-
             await LoadAsync(user);
             return Page();
         }
+        // public applicaiton user typwe getset on the contrustor or aync method
 
         public async Task<IActionResult> OnPostAsync()
         {

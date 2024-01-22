@@ -17,15 +17,25 @@
             <th>Check Out Date</th>
         </tr>
         <br />
-        @foreach (var item in Model.HotelBookingList)
+        
+        @foreach (var booking in Model.HotelBookingList)
         {
-            <tr>
-                <td>@item.Booking_Id</td>
-                <td>@item.Hotel.HotelName</td>
-                <td>@item.RoomType</td>
-                <td>@item.CheckInDate</td>
-                <td>@item.CheckOutDate</td>
-            </tr>
+            // Displays the bookings only from the logged in user
+            @if (booking.User_Id == Model.user.Id)
+            {
+                <tr>
+                    <td>@booking.Booking_Id</td>
+                    <td>@booking.Hotel.HotelName</td>
+                    <td>@booking.RoomType</td>
+                    <td>@booking.CheckInDate</td>
+                    <td>@booking.CheckOutDate</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm">Edit</a>
+                        <a class="btn btn-danger btn-sm">Cancell</a>
+                    </td>
+                </tr>
+            }
         }
     </table>
 </div>
+
