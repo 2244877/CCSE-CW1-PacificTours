@@ -59,7 +59,12 @@ namespace PacificTours.Pages
                 _context.SaveChanges();
 
             }
+            HotelBooking hotelBooking = new();
+            if (hotelBooking != null)
+            {
+                return RedirectToPage("./Payment");
+            }
             return Page();
-        }
+        } 
     }
 }
