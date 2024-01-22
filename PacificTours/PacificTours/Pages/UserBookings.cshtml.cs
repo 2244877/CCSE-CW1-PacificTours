@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -5,6 +6,7 @@ using PacificTours.Models;
 
 namespace PacificTours.Pages
 {
+    [Authorize]
     public class HotelBookingsModel : PageModel
     {
         private readonly PacificTours.Services.ApplicationDbContext _context;

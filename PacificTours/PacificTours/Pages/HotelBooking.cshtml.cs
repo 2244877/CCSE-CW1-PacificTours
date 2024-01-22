@@ -17,6 +17,7 @@ namespace PacificTours.Pages
         public HotelBookingModel(PacificTours.Services.ApplicationDbContext context)
         {
             _context = context;
+            Hotels = _context.hotels.ToList();
         }
 
         [BindProperty]
@@ -26,16 +27,19 @@ namespace PacificTours.Pages
             [Required]
             public string Hotel { get; set; }
             [Required]
-            public string Room { get; set; }
+            public string RoomType { get; set; }
             [Required]
             public DateTime CheckInDate { get; set; }
             [Required]
             public DateTime CheckOutDate { get; set; }
         }
 
+        public List<Hotel> Hotels { get; set; }
+
         public IList<HotelBooking> HotelBookingList { get; set; }
         public async Task OnGet()
         {
+
             HotelBookingList = await _context.hotelbookings
                 .ToListAsync();
         }
@@ -47,7 +51,7 @@ namespace PacificTours.Pages
                 var hotelbooking = new HotelBooking
                 {
                     Hotel = Input.Hotel,
-                    Room = Input.Room,
+                    RoomType = Input.RoomType,
                     CheckInDate = Input.CheckInDate,
                     CheckOutDate = Input.CheckOutDate,
                 };

@@ -50,15 +50,3 @@ builder.Services.AddDbContext<HotelBookingContext>(options =>
         sqlOptions.EnableRetryOnFailure();
     });
 });
-
-
-// Testing adding data to HotelBookings database
-using (var context = new HotelBookingContext())
-{
-    var hotelbooking = new HotelBooking();
-    hotelbooking.Hotel = "Mariot";
-    hotelbooking.Room = "Single";
-
-    context.HotelBookings.Add(hotelbooking);
-    context.SaveChanges();
-}

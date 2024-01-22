@@ -14,11 +14,10 @@
     <table class="table">
         <tr>
             <th>Hotel Name</th>
-            <th>SingleRoomPrice</th>
-            <th>DoubleRoomPrice</th>
-            <th>FamilyRoomPrice</th>
+            <th>SingleRoomPrice Per Night</th>
+            <th>DoubleRoomPrice Per Night</th>
+            <th>FamilyRoomPrice Per Night</th>
         </tr>
-        <br />
         @foreach (var item in Model.HotelList)
         {
             <tr>
@@ -37,7 +36,6 @@
             <th>Tour Name</th>
             <th>TourPrice</th>
         </tr>
-        <br />
         @foreach (var item in Model.TourList)
         {
             <tr>

@@ -9,7 +9,7 @@ namespace PacificTours.Models
         [Required]
         public string Hotel { get; set; } = "";
         [Required]
-        public string Room { get; set; } = "";
+        public string RoomType { get; set; } = "";
         [Required]
         public DateTime CheckInDate { get; set; }
         [Required]

@@ -51,19 +51,19 @@ namespace PacificTours.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8e0613f0-18c5-4f64-bdf9-1c48f1237815",
+                            Id = "6018255d-c973-44df-aa77-9c23ac5bbadc",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "585781af-52c6-4689-a762-f9e50f271411",
+                            Id = "7e7b9fac-0387-4cc2-848b-43fdc96e7988",
                             Name = "client",
                             NormalizedName = "client"
                         },
                         new
                         {
-                            Id = "1bc1829f-2a72-4342-9874-21fefa251d97",
+                            Id = "777bacb3-95d3-4f32-adfb-f74f894b30bc",
                             Name = "seller",
                             NormalizedName = "seller"
                         });
@@ -356,7 +356,7 @@ namespace PacificTours.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Room")
+                    b.Property<string>("RoomType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

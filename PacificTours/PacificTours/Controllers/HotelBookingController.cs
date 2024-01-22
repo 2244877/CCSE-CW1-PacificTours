@@ -6,14 +6,6 @@ namespace PacificTours.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    //public class HotelBookingController : Controller
-    //{
-    //    public IActionResult Index()
-    //    {
-    //        return View();
-    //    }
-    //}
-
     public class HotelBookingController : Controller
     {
         private readonly IHotelBookingRepository _hotelBookingRepository;

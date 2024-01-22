@@ -14,14 +14,11 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Hotel</label>
                 <div class="col-sm-10">
-                    <select class="form-control" name="Hotel" asp-for="Input.Hotel">
-                        <option value="">-- Select --</option>
-                        <option value="">Hilton London Hotel</option>
-                        <option value="">London Marriot Hotel</option>
-                        <option value="">Travelodge Brighton Seafront</option>
-                        <option value="">Kings Hotel Brighton</option>
-                        <option value="">Leonardo Hotel Brighton</option>
-                        <option value="">Nevis Bank Inn, Fort William</option>
+                    <select class="form-control" asp-for="Input.Hotel">
+                        @foreach (var hotel in Model.Hotels)
+                        {
+                            <option value="@hotel.Hotel_Id">@hotel.HotelName</option>
+                        }
                     </select>
                 </div>
             </div>
@@ -29,11 +26,11 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" name="Room">Room</label>
                 <div class="col-sm-10">
-                    <select class="form-control" name="Room" asp-for="Input.Room">
+                    <select class="form-control" asp-for="Input.RoomType">
                         <option value="">-- Select --</option>
-                        <option value="">Single</option>
-                        <option value="">Double</option>
-                        <option value="">Family</option>
+                        <option value="Single">Single</option>
+                        <option value="Double">Double</option>
+                        <option value="Family">Family</option>
                     </select>
                 </div>
             </div>
@@ -41,14 +38,14 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Check In</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control w-100" name="CheckIn" asp-for="Input.CheckInDate"/>
+                    <input type="date" class="form-control w-100" asp-for="Input.CheckInDate"/>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label">Check Out</label>
+                <label for="CheckOutDate" class="col-sm-2 col-form-label">Check Out</label>
                 <div class="col-sm-10 date">
-                    <input type="date" class="form-control w-100" name="CheckOut" asp-for="Input.CheckOutDate"/>
+                    <input type="date" class="form-control w-100" asp-for="Input.CheckOutDate"/>
                 </div>
             </div>
 
