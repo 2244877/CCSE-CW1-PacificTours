@@ -6,25 +6,3 @@
 <div class="text-center">
     <h1 class="display-4">Management Dashboard</h1>
 </div>
-
-<div>
-    <table class="table">
-        <tr>
-            <th>Hotel Booking Id</th>
-            <th>Hotel</th>
-            <th>Room</th>
-            <th>Check In Date</th>
-            <th>Check Out Date</th>
-        </tr>
-        @foreach (var booking in Model.HotelBookingList)
-        {
-            <tr>
-                <td>@booking.Booking_Id</td>
-                <td>@booking.Hotel.HotelName</td>
-                <td>@booking.RoomType</td>
-                <td>@booking.CheckInDate</td>
-                <td>@booking.CheckOutDate</td>
-            </tr>
-        }
-    </table>
-</div>
