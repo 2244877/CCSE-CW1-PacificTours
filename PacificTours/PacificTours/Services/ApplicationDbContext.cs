@@ -14,8 +14,6 @@ namespace PacificTours.Services
         public DbSet<Hotel> hotels { get; set; }
         public DbSet<HotelBooking> hotelbookings { get; set; }
         public DbSet<Tour> tours { get; set; }
-        public DbSet<TourBooking> toursbookings { get; set; }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
 

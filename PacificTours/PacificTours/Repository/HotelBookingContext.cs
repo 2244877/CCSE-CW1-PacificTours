@@ -34,9 +34,9 @@ namespace PacificTours.Repository
             HotelBooking hotelbooking = _context.HotelBookings.Find(Booking_Id);
             _context.HotelBookings.Remove(hotelbooking);
         }
-        public void UpdateHotelBooking(int Booking_Id)
+        public void UpdateHotelBooking(HotelBooking hotelbooking)
         {
-            _context.Entry(Booking_Id).State = EntityState.Modified;
+            _context.Entry(hotelbooking).State = EntityState.Modified;
         }
     }
 }

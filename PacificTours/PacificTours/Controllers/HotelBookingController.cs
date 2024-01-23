@@ -20,7 +20,7 @@ namespace PacificTours.Controllers
             return Ok(_hotelBookingRepository.GetHotelBookings());
         }
         // Get:api/HotelBooking/
-        [HttpGet("{id}")] 
+        [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
             return Ok(_hotelBookingRepository.GetHotelBookingById(id));
@@ -33,13 +33,6 @@ namespace PacificTours.Controllers
             {
                 _hotelBookingRepository.InsertHotelBooking(value);
             }
-        }
-        // Put: api/HotelBooking
-        [HttpPut("{id}")]
-        public void Update(int id)
-        {
-            _hotelBookingRepository.UpdateHotelBooking(id);
-          
         }
         // Delete: api/HotelBooking
         [HttpDelete("{id}")] 
