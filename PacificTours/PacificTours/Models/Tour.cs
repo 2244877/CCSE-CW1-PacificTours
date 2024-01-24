@@ -8,5 +8,6 @@ namespace PacificTours.Models
         public int Tour_Id { get; set; }
         public string TourName { get; set; }
         public string TourPrice { get; set; }
+        public virtual ICollection<TourBooking>? TourBookings { get; set; }
     }
 }

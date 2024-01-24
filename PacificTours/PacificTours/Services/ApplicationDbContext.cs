@@ -14,6 +14,7 @@ namespace PacificTours.Services
         public DbSet<Hotel> hotels { get; set; }
         public DbSet<HotelBooking> hotelbookings { get; set; }
         public DbSet<Tour> tours { get; set; }
+        public DbSet<TourBooking> tourbookings { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
@@ -31,6 +32,7 @@ namespace PacificTours.Services
             builder.Entity<IdentityRole>().HasData(admin, client, seller);
 
             builder.Entity<HotelBooking>().HasOne(hotelbooking => hotelbooking.Hotel).WithMany(hotel => hotel.HotelBookings).HasForeignKey(h => h.Hotel_Id);
+            builder.Entity<TourBooking>().HasOne(tourbooking => tourbooking.Tour).WithMany(tour => tour.TourBookings).HasForeignKey(h => h.Tour_Id);
 
 
             var hotelList = new List<Hotel>

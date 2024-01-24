@@ -54,19 +54,19 @@ namespace PacificTours.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f6373604-24c9-4cea-ac40-dacadc6803f4",
+                            Id = "748c31a5-a85f-4441-9355-f31e9f277c4f",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "c3d62773-b104-476f-8e0c-3f226f7eed73",
+                            Id = "600b4a6a-76f7-4771-ba4f-e03734dded11",
                             Name = "client",
                             NormalizedName = "client"
                         },
                         new
                         {
-                            Id = "16be22d7-85a0-4ad9-b836-e4462b6d91ed",
+                            Id = "c478bf2f-274e-4bc9-8d70-d8c68c100eb1",
                             Name = "seller",
                             NormalizedName = "seller"
                         });
@@ -414,6 +414,34 @@ namespace PacificTours.Migrations
                         });
                 });
 
+            modelBuilder.Entity("PacificTours.Models.TourBooking", b =>
+                {
+                    b.Property<int>("TourBooking_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TourBooking_Id"));
+
+                    b.Property<DateTime>("CheckInDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CheckOutDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Tour_Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("User_Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TourBooking_Id");
+
+                    b.HasIndex("Tour_Id");
+
+                    b.ToTable("tourbookings");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -476,9 +504,25 @@ namespace PacificTours.Migrations
                     b.Navigation("Hotel");
                 });
 
+            modelBuilder.Entity("PacificTours.Models.TourBooking", b =>
+                {
+                    b.HasOne("PacificTours.Models.Tour", "Tour")
+                        .WithMany("TourBookings")
+                        .HasForeignKey("Tour_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tour");
+                });
+
             modelBuilder.Entity("PacificTours.Models.Hotel", b =>
                 {
                     b.Navigation("HotelBookings");
+                });
+
+            modelBuilder.Entity("PacificTours.Models.Tour", b =>
+                {
+                    b.Navigation("TourBookings");
                 });
 #pragma warning restore 612, 618
         }

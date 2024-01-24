@@ -1,0 +1,38 @@
+﻿@page
+@model PacificTours.Pages.TourBookingsModel
+@{
+}
+
+<div class="text-center">
+    <h1 class="display-4">Tour Bookings Page</h1>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>Tour Booking Id</th>
+            <th>Tour</th>
+            <th>Tour Start Date</th>
+            <th>Tour End Date</th>
+        </tr>
+        <br />
+        
+        @foreach (var booking in Model.TourBookingList)
+        {
+            // Displays the bookings only from the logged in user
+            @if (booking.User_Id == Model.user.Id)
+            {
+                <tr>
+                    <td>@booking.Tour_Id</td>
+                    <td>@booking.Tour.TourName</td>
+                    <td>@booking.CheckInDate</td>
+                    <td>@booking.CheckOutDate</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm">Edit</a>
+                        <a class="btn btn-danger btn-sm">Cancel</a>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>

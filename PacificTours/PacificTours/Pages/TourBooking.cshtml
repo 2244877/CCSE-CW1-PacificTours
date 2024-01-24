@@ -10,15 +10,15 @@
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
         
-        <form id="TourBookingForm" method="post" asp-controller="TourBooking" asp-action="SubmitBooking">
+        <form id="TourBookingForm" method="post" asp-controller="TourBooking" asp-action="SubmitBooking" asp-action="OnPostAsync">
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Tour Type</label>
                 <div class="col-sm-10">
-                    <select class="form-control" "> <!--ADDTHISBACKIN: name=" Hotel" asp-for="Input.Tour-->
-                        <option value="">-- Select --</option>
-                        <option value="">Real Britain (6 days)</option>
-                        <option value="">Britain and Ireland Explorer (16 days)</option>
-                        <option value="">Best of Britain (12 days)</option>
+                    <select class="form-control" asp-for="Input.Tour_Id"> 
+                        @foreach (var tour in Model.Tours)
+                        {
+                            <option value="@tour.Tour_Id">@tour.TourName</option>
+                        }
                     </select>
                 </div>
             </div>
@@ -26,7 +26,14 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Tour Start</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control w-100" name="CheckIn" " /> <!--ADDTHISBACKIN: asp-for=" Input.TourCheckInDate-->
+                    <input type="date" class="form-control w-100" name="CheckIn" asp-for="Input.CheckInDate" />
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Tour End</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control w-100" name="CheckOut" asp-for="Input.CheckOutDate" />
                 </div>
             </div>
 
