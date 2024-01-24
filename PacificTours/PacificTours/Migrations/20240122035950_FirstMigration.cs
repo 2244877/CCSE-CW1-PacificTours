@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PacificTours.Migrations
 {
     /// <inheritdoc />
-    public partial class SecondMigration : Migration
+    public partial class FirstMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -202,8 +202,7 @@ namespace PacificTours.Migrations
                     Hotel_Id = table.Column<int>(type: "int", nullable: false),
                     RoomType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CheckInDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CheckOutDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    NumberOfDays = table.Column<int>(type: "int", nullable: false)
+                    CheckOutDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -221,9 +220,9 @@ namespace PacificTours.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "b90be401-39f0-4b6f-a6f6-1c64923e1f6a", null, "client", "client" },
-                    { "bfeb5970-9967-48a9-a468-8c2eb7f8534f", null, "admin", "admin" },
-                    { "e88ff160-7921-4d61-af8e-3c07f7449988", null, "seller", "seller" }
+                    { "16be22d7-85a0-4ad9-b836-e4462b6d91ed", null, "seller", "seller" },
+                    { "c3d62773-b104-476f-8e0c-3f226f7eed73", null, "client", "client" },
+                    { "f6373604-24c9-4cea-ac40-dacadc6803f4", null, "admin", "admin" }
                 });
 
             migrationBuilder.InsertData(

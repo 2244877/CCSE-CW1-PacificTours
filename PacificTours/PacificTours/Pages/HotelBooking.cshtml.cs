@@ -63,10 +63,6 @@ namespace PacificTours.Pages
                     CheckInDate = Input.CheckInDate,
                     CheckOutDate = Input.CheckOutDate,
                 };
-
-                TimeSpan hotelBookingDuration = hotelbooking.CheckOutDate - hotelbooking.CheckInDate;
-                hotelbooking.NumberOfDays = hotelBookingDuration.Days;
-
                 _context.Add(hotelbooking);
                 _context.SaveChanges();
 

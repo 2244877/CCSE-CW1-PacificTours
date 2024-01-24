@@ -17,6 +17,5 @@ namespace PacificTours.Models
         public DateTime CheckInDate { get; set; }
         [Required]
         public DateTime CheckOutDate { get; set;}
-        public int NumberOfDays { get; set; }
     }
 }

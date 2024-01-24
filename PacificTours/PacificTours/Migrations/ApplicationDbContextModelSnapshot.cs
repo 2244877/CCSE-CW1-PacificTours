@@ -54,19 +54,19 @@ namespace PacificTours.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bfeb5970-9967-48a9-a468-8c2eb7f8534f",
+                            Id = "f6373604-24c9-4cea-ac40-dacadc6803f4",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "b90be401-39f0-4b6f-a6f6-1c64923e1f6a",
+                            Id = "c3d62773-b104-476f-8e0c-3f226f7eed73",
                             Name = "client",
                             NormalizedName = "client"
                         },
                         new
                         {
-                            Id = "e88ff160-7921-4d61-af8e-3c07f7449988",
+                            Id = "16be22d7-85a0-4ad9-b836-e4462b6d91ed",
                             Name = "seller",
                             NormalizedName = "seller"
                         });
@@ -356,9 +356,6 @@ namespace PacificTours.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Hotel_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumberOfDays")
                         .HasColumnType("int");
 
                     b.Property<string>("RoomType")
