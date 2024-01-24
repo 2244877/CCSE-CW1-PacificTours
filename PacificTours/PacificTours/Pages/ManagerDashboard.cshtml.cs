@@ -22,9 +22,14 @@ namespace PacificTours.Pages
         public ApplicationUser user { get; set; }
 
         public IList<HotelBooking> HotelBookingList { get; set; }
+        public IList<TourBooking> TourBookingList { get; set; }
         public async Task OnGet()
         {
             HotelBookingList = await _context.hotelbookings
+                .ToListAsync();
+            user = await _userManager.GetUserAsync(User);
+
+            TourBookingList = await _context.tourbookings
                 .ToListAsync();
             user = await _userManager.GetUserAsync(User);
         }
