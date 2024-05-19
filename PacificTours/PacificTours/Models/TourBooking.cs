@@ -13,6 +13,7 @@ namespace PacificTours.Models
         public virtual Tour? Tour { get; set; }
         [Required]
         public DateTime CheckInDate { get; set; }
+        [Required]
         public DateTime CheckOutDate { get; set; }
     }
 }
