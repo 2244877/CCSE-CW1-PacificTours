@@ -1,7 +1,7 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: .NET
+name: .NET Core
 
 on:
   push:
@@ -16,13 +16,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Setup .NET
+    - name: Setup .NET Core
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: '8.0.x'
+
     - name: Restore dependencies
-      run: dotnet restore CCSE-CW1-PacificTours/PacificTours/PacificTours.sln
+      run: dotnet restore
+      working-directory: PacificTours
+
     - name: Build
-      run: dotnet build CCSE-CW1-PacificTours/PacificTours/PacificTours.sln --no-restore --no-restore
+      run: dotnet build --configuration Release --no-restore
+      working-directory: PacificTours
+
     - name: Test
-      run: dotnet test CCSE-CW1-PacificTours/PacificTours/PacificTours.sln --no-restore --no-build --verbosity normal
+      run: dotnet test --no-restore --verbosity normal
+      working-directory: PacificTours
