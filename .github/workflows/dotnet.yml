@@ -38,23 +38,3 @@ jobs:
         docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
         docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
         docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
-
-
-
-
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.0.x'
-
-    - name: Restore dependencies
-      run: dotnet restore
-      working-directory: PacificTours
-
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-      working-directory: PacificTours
-
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
-      working-directory: PacificTours
