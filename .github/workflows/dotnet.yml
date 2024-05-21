@@ -11,7 +11,7 @@ jobs:
     env:
       IMAGE_NAME: pacifictourswebapp
       PROJECT_ID: pacifictoursproject
-      REPOSITORY_NAME: pacifictoursrepository
+      REPOSITORY_NAME: pacifictours-repository
       REGION: us-west2
       SERVICE_NAME: pacifictours-service
 
