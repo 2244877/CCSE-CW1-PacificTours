@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      IMAGE_NAME: image-placeholder
+      IMAGE_NAME: my-web-app
       PROJECT_ID: pacifictoursproject
+      REPOSITORY_NAME: pacifictoursrepository
+      REGION: us-west2
 
     steps:
     - uses: actions/checkout@v4
@@ -35,11 +37,11 @@ jobs:
         gcloud auth configure-docker --quiet
         gcloud auth configure-docker us-west2-docker.pkg.dev --quiet
 
-    - name: Push Docker Image to Container Registry (GCR)
+    - name: Push Docker Image to Artifact Registry
       env:
-        GIT_TAG: v0.1.0
+        GIT_TAG: ${{ github.sha }}
       run: |-
-        docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
-        docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
-        docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
-        docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
+        docker tag $IMAGE_NAME:latest ${{ env.REGION }}-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME/$IMAGE_NAME:latest
+        docker tag $IMAGE_NAME:latest ${{ env.REGION }}-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME/$IMAGE_NAME:$GIT_TAG
+        docker push ${{ env.REGION }}-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME/$IMAGE_NAME:latest
+        docker push ${{ env.REGION }}-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME/$IMAGE_NAME:$GIT_TAG
