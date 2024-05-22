@@ -52,4 +52,4 @@ jobs:
           --platform managed \
           --region $REGION \
           --allow-unauthenticated \
-          --update-env-vars PORT=8081
+          --update-env-vars PORT=8080
