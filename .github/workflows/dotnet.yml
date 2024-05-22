@@ -5,6 +5,20 @@ on:
     branches: [ "main" ]
 
 jobs:
+  sast-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Snyk CLI
+      run: npm install -g snyk
+
+    - name: Snyk scan
+      run: |
+        snyk auth ${{ secrets.SNYK_AUTH_TOKEN }}
+        snyk test /PacificTours/PacificTours.sln --dotnet-version-info=latest
+  
   docker:
     runs-on: ubuntu-latest
 
@@ -17,13 +31,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
-    - name: Run Snyk SAST Scan
-      uses: snyk/actions/snyk@master
-      with:
-        command: test
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_AUTH_TOKEN }}
 
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v2
