@@ -8,8 +8,16 @@ jobs:
   sast-scan:
     runs-on: ubuntu-latest
 
+    env:
+      SNYK_LOG_PATH: /tmp/snyk.log
+
     steps:
     - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
 
     - name: Install Snyk CLI
       run: npm install -g snyk
