@@ -66,12 +66,6 @@ jobs:
           --platform managed \
           --region $REGION \
           --allow-unauthenticated
-    
-    - name: Set image URL as output
-      run: |
-        SERVICE_URL=$(gcloud run services describe $SERVICE_NAME --region=$REGION --format='value(status.url)')
-        echo "::set-output name=service_url::$SERVICE_URL"
-        id: image_url
   
   dast-scan:
     runs-on: ubuntu-latest
@@ -79,6 +73,8 @@ jobs:
 
     env:
       PROJECT_ID: pacifictoursproject-424022
+      REGION: us-west2
+      SERVICE_NAME: pacifictours-service
 
     steps:
       - name: Checkout code
@@ -93,8 +89,12 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: ${{ env.PROJECT_ID }}
+
+      - name: Get Docker image URL
+        id: get_image_url
+        run: echo "::set-output name=image_url::https://$(gcloud run services describe ${{ env.SERVICE_NAME }} --platform=managed --region=${{ env.REGION }} --format='value(status.url)')"
       
       - name: Run OWASP ZAP scan
         uses: zaproxy/action-full-scan@v0.9.0
         with:
-          target: ${{ needs.docker.outputs.image_url }}
+          target: ${{ steps.get_image_url.outputs.image_url }}
