@@ -1,4 +1,4 @@
-name: Build web app and push to google cloud
+name: Build web app and push to google cloud with sast and dast scan
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
     - name: Snyk scan
       run: |
         snyk auth ${{ secrets.SNYK_AUTH_TOKEN }}
-        snyk test --all-projects
+        snyk test /PacificTours/PacificTours.sln --dotnet-version-info=latest
 
   docker:
     runs-on: ubuntu-latest
