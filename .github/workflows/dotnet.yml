@@ -51,5 +51,4 @@ jobs:
           --image $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME/$IMAGE_NAME:latest \
           --platform managed \
           --region $REGION \
-          --allow-unauthenticated \
-          --update-env-vars PORT=8080
+          --allow-unauthenticated
