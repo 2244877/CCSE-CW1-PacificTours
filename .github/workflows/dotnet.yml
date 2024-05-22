@@ -12,7 +12,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
       - name: Restore dependencies
-        run: dotnet restore ./PacificTours/PacificTours.sln
+        run: dotnet restore /PacificTours/PacificTours.sln
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/dotnet@master
         env:
