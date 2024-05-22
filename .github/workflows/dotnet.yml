@@ -5,27 +5,18 @@ on:
     branches: [ "main" ]
 
 jobs:
-  sast-scan:
+    sast-scan:
     runs-on: ubuntu-latest
-
-    env:
-      SNYK_LOG_PATH: /tmp/snyk.log
-
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 7.0.x
-
-    - name: Install Snyk CLI
-      run: npm install -g snyk
-
-    - name: Snyk scan
-      run: |
-        snyk auth ${{ secrets.SNYK_AUTH_TOKEN }}
-        snyk test /PacificTours/PacificTours/PacificTours.csproj --dotnet-version-info=latest
+      - uses: actions/checkout@master
+      - name: Setup .NET
+        uses: actions/setup-dotnet@3.0.3
+      - name: Restore dependencies
+        run: dotnet restore ./PacificTours/PacificTours.sln
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/dotnet@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_AUTH_TOKEN }}
 
   docker:
     runs-on: ubuntu-latest
