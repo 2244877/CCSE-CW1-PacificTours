@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Setup .NET
-        uses: actions/setup-dotnet@3.0.3
+        uses: actions/setup-dotnet@v4
       - name: Restore dependencies
         run: dotnet restore ./PacificTours/PacificTours.sln
       - name: Run Snyk to check for vulnerabilities
