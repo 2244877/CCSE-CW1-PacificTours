@@ -68,12 +68,17 @@ jobs:
           --allow-unauthenticated
     
     - name: Set image URL as output
+    run: |
+      SERVICE_URL=$(gcloud run services describe $SERVICE_NAME --region=$REGION --format='value(status.url)')
+      echo "::set-output name=service_url::$SERVICE_URL"
       id: image_url
-      run: echo "::set-output name=image_url::${{ env.REGION }}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY_NAME}/${IMAGE_NAME}:latest"
   
   dast-scan:
     runs-on: ubuntu-latest
     needs: docker
+
+    env:
+      PROJECT_ID: pacifictoursproject-424022
 
     steps:
       - name: Checkout code
