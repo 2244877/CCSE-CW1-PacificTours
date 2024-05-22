@@ -92,7 +92,7 @@ jobs:
 
       - name: Get Docker image URL
         id: get_image_url
-        run: echo "::set-output name=image_url::https://$(gcloud run services describe ${{ env.SERVICE_NAME }} --platform=managed --region=${{ env.REGION }} --format='value(status.url)')"
+        run: echo "::set-output name=image_url::$(gcloud run services describe ${{ env.SERVICE_NAME }} --platform=managed --region=${{ env.REGION }} --format='value(status.url)')"
       
       - name: Run OWASP ZAP scan
         uses: zaproxy/action-full-scan@v0.9.0
