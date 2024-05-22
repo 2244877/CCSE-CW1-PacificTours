@@ -5,8 +5,23 @@ on:
     branches: [ "main" ]
 
 jobs:
+  sast-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Snyk CLI
+      run: npm install -g snyk
+
+    - name: Snyk scan
+      run: |
+        snyk auth ${{ secrets.SNYK_AUTH_TOKEN }}
+        snyk test --all-projects
+
   docker:
     runs-on: ubuntu-latest
+    needs: snyk_scan
 
     env:
       IMAGE_NAME: pacifictourswebapp
